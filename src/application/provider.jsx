@@ -1,10 +1,16 @@
 import React, {createContext, useState} from 'react';
+import Loki from 'lokijs';
+
+const AppContext = createContext();
 
 const MyProvider = props => {
-  const [state, setState] = useState({});
+
+  let db = new Loki('example.db');
+  const [database, setDatabase] = useState({ db });
+  
   return (
     <div>
-      <AppContext.Provider value={[state, setState]}>
+      <AppContext.Provider value={[database, setDatabase]}>
         {props.children}
       </AppContext.Provider>
     </div>
@@ -12,4 +18,3 @@ const MyProvider = props => {
 }
 
 export default MyProvider;
-export const AppContext = createContext();
