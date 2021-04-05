@@ -1,11 +1,13 @@
 import './App.css';
 import React from 'react';
-import MyProvider from './application/provider';
+import ErrorCard from './components/error-card';
+import DataBaseContext, { db } from './application/database-provider';
 
 const App = () => {
   return (
-    <MyProvider>
-    </MyProvider>
+    <DataBaseContext value={db}>
+      <ErrorCard />
+    </DataBaseContext>
   );
 }
 
