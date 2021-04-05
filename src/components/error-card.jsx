@@ -4,9 +4,9 @@ import DataBaseContext from '../application/database-provider';
 
 const ErrorCard = () => {
 
-  const db = useContext(DataBaseContext);
+  const data = useContext(DataBaseContext);
   return (
-    <h1> {db} </h1>
+    <div> {JSON.stringify(data)} </div>
 
   );
 }

@@ -5,9 +5,9 @@ import DataBaseContext, { db } from './application/database-provider';
 
 const App = () => {
   return (
-    <DataBaseContext value={db}>
+    <DataBaseContext.Provider value={db}>
       <ErrorCard />
-    </DataBaseContext>
+    </DataBaseContext.Provider>
   );
 }
 
