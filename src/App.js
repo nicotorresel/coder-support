@@ -1,14 +1,22 @@
-import "./App.css";
+import "./App.scss";
 import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { ChakraProvider } from "@chakra-ui/react";
 
-import ErrorCard from "./components/error-card";
+import PageHome from "./pages/page-home";
 import DataBaseContext, { db } from "./application/database-provider";
 
 const App = () => {
   return (
-    <DataBaseContext.Provider value={db}>
-      <ErrorCard />
-    </DataBaseContext.Provider>
+    <ChakraProvider>
+      <DataBaseContext.Provider value={db}>
+        <BrowserRouter>
+          <Switch>
+            <Route component={PageHome} path="/" />
+          </Switch>
+        </BrowserRouter>
+      </DataBaseContext.Provider>
+    </ChakraProvider>
   );
 };
 
