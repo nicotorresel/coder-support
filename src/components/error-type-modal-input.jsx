@@ -8,7 +8,6 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  useDisclosure,
 } from "@chakra-ui/react";
 
 const ErrorTypeModalInput = ({ isOpen, onClose }) => {

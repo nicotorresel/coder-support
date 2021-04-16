@@ -1,11 +1,22 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import DataBaseContext from "../application/database-provider";
+const ErrorCard = ({ content }) => {
+  const { date_created, reporter, comment, error_type } = content;
 
-const ErrorCard = () => {
-  const data = useContext(DataBaseContext);
-
-  return <div> {JSON.stringify(data)}</div>;
+  return (
+    <box>
+      <box>
+        {date_created}
+        {reporter.name}
+        {comment}
+      </box>
+      <box>
+        {error_type.title}
+        {error_type.description}
+        {error_type.posible_wrokourounds[1]}
+      </box>
+    </box>
+  );
 };
 
 export default ErrorCard;
