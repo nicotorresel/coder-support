@@ -12,15 +12,18 @@ const PageHome = () => {
 
   return (
     <Box>
-      <Box alignItems="center" d="flex" justifyContent="center">
-        <Input m="6px" placeholder="Buscar Error" w="70%" />
+      <Box alignItems="center" bg="purple.600" d="flex" justifyContent="center">
+        <Input bg="white" m="6px" placeholder="Buscar Error" w="70%" />
         <Button>Buscar</Button>
       </Box>
-      <Center m="10px">
-        <Button mx="auto" onClick={onOpen}>
+      <Box d="flex" justifyContent="center">
+        <Button m="6px" onClick={onOpen}>
+          Cargar Error
+        </Button>
+        <Button m="6px" onClick={onOpen}>
           Cargar tipo de Error
         </Button>
-      </Center>
+      </Box>
       <ErrorTypeModalInput isOpen={isOpen} onClose={onClose} />
       <Box>
         {errorTypeCollection &&
