@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Button, useDisclosure, Input, Box, Center } from "@chakra-ui/react";
 
 import ErrorTypeCard from "../components/error-type-card";
-import ErrorTypeModalInput from "../components/error-type-modal-input";
+import ErrorTypeForm from "../components/error-type-form";
 import DataBaseContext from "../application/database-provider";
 
 const PageHome = () => {
@@ -24,7 +24,7 @@ const PageHome = () => {
           Cargar tipo de Error
         </Button>
       </Box>
-      <ErrorTypeModalInput isOpen={isOpen} onClose={onClose} />
+      <ErrorTypeForm isOpen={isOpen} onClose={onClose} />
       <Box>
         {errorTypeCollection &&
           errorTypeCollection.find().map((error, key) => {
