@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Button, useDisclosure, Input, Box, Center } from "@chakra-ui/react";
+import { Button, useDisclosure, Input, Box } from "@chakra-ui/react";
 
 import ErrorTypeCard from "../components/error-type-card";
 import ErrorTypeForm from "../components/error-type-form";
@@ -12,10 +12,6 @@ const PageHome = () => {
 
   return (
     <Box>
-      <Box alignItems="center" bg="purple.600" d="flex" justifyContent="center">
-        <Input bg="white" m="6px" placeholder="Buscar Error" w="70%" />
-        <Button>Buscar</Button>
-      </Box>
       <Box d="flex" justifyContent="center">
         <Button m="6px" onClick={onOpen}>
           Cargar Error
