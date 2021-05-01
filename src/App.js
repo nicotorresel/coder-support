@@ -1,7 +1,5 @@
-import "./App.scss";
 import React from "react";
 import { Stack } from "@chakra-ui/react";
-import { Box } from "@chakra-ui/react";
 
 import Routes from "./components/routes";
 import Navbar from "./components/navbar";
@@ -12,9 +10,7 @@ const App = () => {
   return (
     <DataBaseContext.Provider value={db}>
       <Stack direction="row" spacing={0}>
-        <Box bg="purple.100" height="100vh">
-          <Navbar />
-        </Box>
+        <Navbar />
         <Stack width="100%">
           <Searchbar />
           <Routes />

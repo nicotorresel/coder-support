@@ -59,7 +59,6 @@ const ErrorTypeForm = ({ isOpen, onClose }) => {
               <Input
                 isRequired
                 marginY="6px"
-                placeholder="Fecha"
                 type="date"
                 value={fecha}
                 onChange={({ target }) => setFecha(target.value)}
