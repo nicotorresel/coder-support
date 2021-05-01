@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Button, useDisclosure, Input, Box } from "@chakra-ui/react";
+import { Button, useDisclosure, Input, Box, Stack } from "@chakra-ui/react";
 
 import ErrorTypeCard from "../components/error-type-card";
 import ErrorTypeForm from "../components/error-type-form";
@@ -12,21 +12,21 @@ const PageHome = () => {
 
   return (
     <Box>
-      <Box d="flex" justifyContent="center">
+      <Stack alignItems="center" direction="row" justifyContent="center">
         <Button m="6px" onClick={onOpen}>
           Cargar Error
         </Button>
         <Button m="6px" onClick={onOpen}>
           Cargar tipo de Error
         </Button>
-      </Box>
+      </Stack>
       <ErrorTypeForm isOpen={isOpen} onClose={onClose} />
-      <Box>
+      <Stack mt={10} spacing={3}>
         {errorTypeCollection &&
           errorTypeCollection.find().map((error, key) => {
             return <ErrorTypeCard key={error} content={error} />;
           })}
-      </Box>
+      </Stack>
     </Box>
   );
 };

@@ -1,8 +1,10 @@
-import { Stack, Box } from "@chakra-ui/react";
+import { Stack, Box, Button, useColorMode } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <Stack
       _hover={{ left: "0", transition: ".5s" }}
@@ -28,6 +30,9 @@ const Navbar = () => {
           Tipos de Error
         </Box>
       </Link>
+      <Button bottom={2} left={12} position="absolute" onClick={toggleColorMode}>
+        {colorMode === "light" ? "Dark" : "Light"}
+      </Button>
     </Stack>
   );
 };

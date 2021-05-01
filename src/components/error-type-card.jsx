@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Center } from "@chakra-ui/react";
+import { Stack, Center, Text } from "@chakra-ui/react";
 
 const ErrorTypeCard = ({ content }) => {
   const { title, date_created, description, ...posible_workourounds } = content;
@@ -8,21 +8,25 @@ const ErrorTypeCard = ({ content }) => {
 
   return (
     <Center>
-      <Box
+      <Stack
+        alignItems="center"
         bg="gray.200"
         boxShadow="sm"
-        d="flex"
+        direction="row"
         justifyContent="space-between"
-        m="10px"
-        p="6"
+        p={2}
         rounded="md"
         width="80%"
       >
-        <Box>Titulo: {title}</Box>
-        <Box>Fecha creacion: {date_created}</Box>
-        <Box>Descripción: {description}</Box>
-        <p>Cantidad de Veces: {}</p>
-      </Box>
+        <Text as="kbd" color="black">
+          {title}
+        </Text>
+        <Text>{date_created}</Text>
+        <Text color="gray.600" fontSize="lg" width="50%">
+          {description}
+        </Text>
+        <Text>Repeticiones: {}</Text>
+      </Stack>
     </Center>
   );
 };
