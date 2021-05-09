@@ -3,8 +3,9 @@ import { Stack } from "@chakra-ui/react";
 
 import Routes from "./components/routes";
 import Navbar from "./components/navbar";
-import DataBaseContext, { db } from "./application/database-provider";
+import DataBaseContext, { db } from "./database/database-provider";
 import Searchbar from "./components/search-bar";
+import fire from "./fire";
 
 const App = () => {
   return (

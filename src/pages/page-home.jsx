@@ -3,7 +3,7 @@ import { Button, useDisclosure, Input, Box, Stack } from "@chakra-ui/react";
 
 import ErrorTypeCard from "../components/error-type-card";
 import ErrorTypeForm from "../components/error-type-form";
-import DataBaseContext from "../application/database-provider";
+import DataBaseContext from "../database/database-provider";
 
 const PageHome = () => {
   const { onOpen, isOpen, onClose } = useDisclosure();

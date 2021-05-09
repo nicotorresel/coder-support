@@ -13,7 +13,7 @@ import {
   FormControl,
 } from "@chakra-ui/react";
 
-import DataBaseContext from "../application/database-provider";
+import DataBaseContext from "../database/database-provider";
 
 const ErrorTypeForm = ({ isOpen, onClose }) => {
   const dataDB = useContext(DataBaseContext);
