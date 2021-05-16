@@ -13,26 +13,21 @@ import {
   FormControl,
 } from "@chakra-ui/react";
 
-import DataBaseContext from "../database/database-provider";
-
 const ErrorTypeForm = ({ isOpen, onClose }) => {
-  const dataDB = useContext(DataBaseContext);
-  let errorTypeCollection = dataDB.getCollection("error_type");
-
   const [titulo, setTitulo] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [fecha, setFecha] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    errorTypeCollection.insert({
-      date_created: fecha,
-      title: titulo,
-      description: descripcion,
-      posible_workarounds: [
-        { date_created: "12-6-21", description: "desde el boton menu de los 3 puntitos...." },
-      ],
-    });
+    // errorTypeCollection.insert({
+    //   date_created: fecha,
+    //   title: titulo,
+    //   description: descripcion,
+    //   posible_workarounds: [
+    //     { date_created: "12-6-21", description: "desde el boton menu de los 3 puntitos...." },
+    //   ],
+    // });
 
     return onClose();
   }

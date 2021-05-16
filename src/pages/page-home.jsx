@@ -1,14 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, useDisclosure, Input, Box, Stack } from "@chakra-ui/react";
+import { getElementError } from "@testing-library/dom";
 
 import ErrorTypeCard from "../components/error-type-card";
 import ErrorTypeForm from "../components/error-type-form";
-import DataBaseContext from "../database/database-provider";
+import firebase from "../firebase";
 
 const PageHome = () => {
   const { onOpen, isOpen, onClose } = useDisclosure();
-  const dataDB = useContext(DataBaseContext);
-  const errorTypeCollection = dataDB.getCollection("error_type");
+  const [errors, setErrors] = useState([]);
+  const ref = firebase.firestore().collection("error");
+
+  function getErrors() {
+    ref.onSnapshot((querySnapshot) => {
+      const items = [];
+
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setErrors(items);
+    });
+  }
+
+  useEffect(() => {
+    getErrors();
+  }, []);
 
   return (
     <Box>
@@ -22,8 +38,8 @@ const PageHome = () => {
       </Stack>
       <ErrorTypeForm isOpen={isOpen} onClose={onClose} />
       <Stack mt={10} spacing={3}>
-        {errorTypeCollection &&
-          errorTypeCollection.find().map((error, key) => {
+        {errors &&
+          errors.map((error, key) => {
             return <ErrorTypeCard key={error} content={error} />;
           })}
       </Stack>

@@ -10,6 +10,6 @@ let firebaseConfig = {
   measurementId: "G-ZG5NYE7EEZ",
 };
 
-let fire = firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
-export default fire;
+export default firebase;
