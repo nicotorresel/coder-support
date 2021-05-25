@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -13,6 +13,20 @@ import {
   FormControl,
 } from "@chakra-ui/react";
 
+import firebase from "../firebase";
+let next_error;
+
+const ref = firebase.firestore().collection("error");
+
+ref.onSnapshot((querySnapshot) => {
+  const items = [];
+
+  querySnapshot.forEach((doc) => {
+    items.push(doc.data());
+  });
+  next_error = items.length + 1;
+});
+
 const ErrorTypeForm = ({ isOpen, onClose }) => {
   const [titulo, setTitulo] = useState("");
   const [descripcion, setDescripcion] = useState("");
@@ -20,14 +34,13 @@ const ErrorTypeForm = ({ isOpen, onClose }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // errorTypeCollection.insert({
-    //   date_created: fecha,
-    //   title: titulo,
-    //   description: descripcion,
-    //   posible_workarounds: [
-    //     { date_created: "12-6-21", description: "desde el boton menu de los 3 puntitos...." },
-    //   ],
-    // });
+    let docData = {
+      descripcion,
+      fecha,
+      titulo,
+    };
+
+    ref.doc(`error${next_error}`).set(docData);
 
     return onClose();
   }

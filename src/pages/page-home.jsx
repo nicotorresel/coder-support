@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Button, useDisclosure, Input, Box, Stack } from "@chakra-ui/react";
-import { getElementError } from "@testing-library/dom";
+import React, { useEffect, useState } from "react";
+import { Button, useDisclosure, Box, Stack } from "@chakra-ui/react";
 
 import ErrorTypeCard from "../components/error-type-card";
 import ErrorTypeForm from "../components/error-type-form";
