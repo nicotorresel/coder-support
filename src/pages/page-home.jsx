@@ -3,10 +3,12 @@ import { Button, useDisclosure, Box, Stack } from "@chakra-ui/react";
 
 import ErrorTypeCard from "../components/error-type-card";
 import ErrorTypeForm from "../components/error-type-form";
+import ErrorForm from "../components/error-form";
 import firebase from "../firebase";
 
 const PageHome = () => {
   const { onOpen, isOpen, onClose } = useDisclosure();
+  const { onOpen: onOpenError, isOpen: isOpenError, onClose: onCloseError } = useDisclosure();
   const [errors, setErrors] = useState([]);
   const ref = firebase.firestore().collection("error");
 
@@ -28,7 +30,7 @@ const PageHome = () => {
   return (
     <Box>
       <Stack alignItems="center" direction="row" justifyContent="center">
-        <Button m="6px" onClick={onOpen}>
+        <Button m="6px" onClick={onOpenError}>
           Cargar Error
         </Button>
         <Button m="6px" onClick={onOpen}>
@@ -36,6 +38,7 @@ const PageHome = () => {
         </Button>
       </Stack>
       <ErrorTypeForm isOpen={isOpen} onClose={onClose} />
+      <ErrorForm isOpenError={isOpenError} onCloseError={onCloseError} />
       <Stack mt={10} spacing={3}>
         {errors &&
           errors.map((error, key) => {

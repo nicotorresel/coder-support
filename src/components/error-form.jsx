@@ -27,40 +27,40 @@ ref.onSnapshot((querySnapshot) => {
   next_error = items.length + 1;
 });
 
-const ErrorTypeForm = ({ isOpen, onClose }) => {
-  const [titulo, setTitulo] = useState("");
-  const [descripcion, setDescripcion] = useState("");
-  const [date_created, setdate_created] = useState("");
+const ErrorForm = ({ isOpenError, onCloseError }) => {
+  const [date_created, setDate_created] = useState("");
+  const [comment, setComment] = useState("");
+  const [error_type, setError_type] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
     let docData = {
-      descripcion,
       date_created,
-      titulo,
+      comment,
+      error_type,
     };
 
     ref.doc(`error${next_error}`).set(docData);
 
-    return onClose();
+    return onCloseError();
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpenError} onClose={onCloseError}>
       <ModalOverlay />
       <ModalContent alignItems="center" d="flex" flexDir="column">
-        <ModalHeader>Tipo de Error</ModalHeader>
+        <ModalHeader>Error</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <form method="POST" onSubmit={handleSubmit}>
             <FormControl>
               <Input
                 isRequired
-                id="titulo"
-                placeholder="Titulo"
+                id="error_type"
+                placeholder="Tipo de Error"
                 type="text"
-                value={titulo}
-                onChange={({ target }) => setTitulo(target.value)}
+                value={comment}
+                onChange={({ target }) => setComment(target.value)}
               />
             </FormControl>
             <FormControl>
@@ -69,7 +69,7 @@ const ErrorTypeForm = ({ isOpen, onClose }) => {
                 marginY="6px"
                 type="date"
                 value={date_created}
-                onChange={({ target }) => setdate_created(target.value)}
+                onChange={({ target }) => setDate_created(target.value)}
               />
             </FormControl>
             <FormControl>
@@ -78,8 +78,8 @@ const ErrorTypeForm = ({ isOpen, onClose }) => {
                 name="descripcion"
                 placeholder="Descripción"
                 type="text"
-                value={descripcion}
-                onChange={({ target }) => setDescripcion(target.value)}
+                value={error_type}
+                onChange={({ target }) => setError_type(target.value)}
               />
             </FormControl>
             <Center>
@@ -94,4 +94,4 @@ const ErrorTypeForm = ({ isOpen, onClose }) => {
   );
 };
 
-export default ErrorTypeForm;
+export default ErrorForm;

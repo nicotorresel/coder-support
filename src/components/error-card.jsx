@@ -1,7 +1,7 @@
 import React from "react";
 import { Stack, Center, Text } from "@chakra-ui/react";
 
-const ErrorTypeCard = ({ content }) => {
+const ErrorCard = ({ content }) => {
   const { comment, date_created, description } = content;
 
   return (
@@ -29,4 +29,4 @@ const ErrorTypeCard = ({ content }) => {
   );
 };
 
-export default ErrorTypeCard;
+export default ErrorCard;
